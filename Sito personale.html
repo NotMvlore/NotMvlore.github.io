@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Il tuo nome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #faf9f6;
+  --bg2: #f1efe8;
+  --card: #ffffff;
+  --fg: #181816;
+  --muted: #76766e;
+  --line: #e6e4dc;
+  --accent: #c4552d;
+  --glow: rgba(196, 85, 45, 0.12);
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121211;
+    --bg2: #1a1917;
+    --card: #1b1a18;
+    --fg: #efede6;
+    --muted: #8e8d85;
+    --line: #2b2a27;
+    --accent: #e8805a;
+    --glow: rgba(232, 128, 90, 0.14);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121211;
+  --bg2: #1a1917;
+  --card: #1b1a18;
+  --fg: #efede6;
+  --muted: #8e8d85;
+  --line: #2b2a27;
+  --accent: #e8805a;
+  --glow: rgba(232, 128, 90, 0.14);
+}
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  color: var(--fg);
+  font-family: "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.7;
+  background:
+    radial-gradient(60rem 30rem at 85% -10%, var(--glow), transparent 60%),
+    radial-gradient(40rem 25rem at -10% 40%, var(--glow), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+main { max-width: 640px; margin: 0 auto; padding: 14vh 24px 80px; }
+
+/* header */
+.top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 72px; }
+.logo { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 1.1rem; }
+nav { display: flex; gap: 22px; align-items: center; font-size: 0.9rem; }
+nav a { color: var(--muted); border: 0; transition: color .2s; }
+nav a:hover { color: var(--fg); }
+#theme {
+  background: none; border: 1px solid var(--line); color: var(--muted);
+  width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 0.95rem;
+  transition: border-color .2s, color .2s;
+}
+#theme:hover { border-color: var(--accent); color: var(--fg); }
+
+/* hero */
+.hero { display: flex; gap: 24px; align-items: center; margin-bottom: 24px; }
+.avatar {
+  flex: none; width: 76px; height: 76px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: "Fraunces", Georgia, serif; font-size: 1.9rem; font-weight: 600; color: #fff;
+  background: linear-gradient(135deg, var(--accent), #e9b44c);
+}
+.status { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--muted); }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: #4caf7a; box-shadow: 0 0 0 4px rgba(76,175,122,.18); }
+h1 {
+  font-family: "Fraunces", Georgia, serif; font-weight: 600;
+  font-size: clamp(2.4rem, 8vw, 3.6rem); letter-spacing: -0.035em; line-height: 1.05;
+  margin: 28px 0 18px;
+}
+h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
+.lead { font-size: 1.15rem; color: var(--muted); max-width: 30em; margin: 0 0 32px; }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  display: inline-block; padding: 11px 22px; border-radius: 999px; font-size: 0.95rem; font-weight: 500;
+  border: 1px solid var(--line); color: var(--fg); transition: transform .2s, border-color .2s, background .2s;
+}
+.btn:hover { transform: translateY(-2px); border-color: var(--accent); }
+.btn.primary { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+
+/* sections */
+section { margin-top: 96px; }
+h2 {
+  font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.16em;
+  color: var(--accent); margin: 0 0 24px; display: flex; align-items: center; gap: 14px;
+}
+h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+p { margin: 0 0 14px; }
+.about p { font-size: 1.05rem; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.tags span { font-size: 0.85rem; padding: 5px 14px; border-radius: 999px; background: var(--bg2); border: 1px solid var(--line); color: var(--muted); }
+
+.grid { display: grid; gap: 14px; }
+.card {
+  display: block; padding: 22px 24px; border-radius: 18px; background: var(--card);
+  border: 1px solid var(--line); border-bottom-color: var(--line);
+  transition: transform .25s, border-color .25s, box-shadow .25s;
+}
+.card:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 10px 30px -12px var(--glow); }
+.card .meta { font-size: 0.8rem; color: var(--muted); display: flex; justify-content: space-between; margin-bottom: 6px; }
+.card h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 1.25rem; margin: 0 0 6px; letter-spacing: -0.01em; }
+.card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+.timeline { border-left: 1px solid var(--line); padding-left: 24px; margin-left: 4px; }
+.timeline > div { position: relative; padding-bottom: 28px; }
+.timeline > div::before {
+  content: ""; position: absolute; left: -29px; top: 9px; width: 9px; height: 9px;
+  border-radius: 50%; background: var(--bg); border: 2px solid var(--accent);
+}
+.timeline b { font-weight: 500; }
+.timeline small { display: block; color: var(--muted); font-size: 0.85rem; }
+
+.contact { text-align: center; padding: 48px 24px; border-radius: 24px; background: var(--card); border: 1px solid var(--line); }
+.contact h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 1.7rem; margin: 0 0 8px; letter-spacing: -0.02em; }
+.contact p { color: var(--muted); }
+.links { display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; margin-top: 22px; font-size: 0.95rem; }
+.links a { color: var(--fg); border-bottom: 1px solid var(--line); transition: border-color .2s; }
+.links a:hover { border-color: var(--accent); }
+
+footer { margin-top: 64px; text-align: center; color: var(--muted); font-size: 0.82rem; }
+a { text-decoration: none; color: inherit; }
+
+/* entrance */
+.fade { opacity: 0; transform: translateY(14px); animation: in .7s ease forwards; }
+.fade:nth-child(2) { animation-delay: .08s; } .fade:nth-child(3) { animation-delay: .16s; }
+.fade:nth-child(4) { animation-delay: .24s; }
+@keyframes in { to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .fade { animation: none; opacity: 1; transform: none; } html { scroll-behavior: auto; } }
+@media (max-width: 480px) { nav a.hide { display: none; } .hero { flex-direction: column; align-items: flex-start; } }
+</style>
+</head>
+<body>
+<main>
+
+  <!-- MODIFICA: logo e menu -->
+  <div class="top fade">
+    <div class="logo">Il tuo nome</div>
+    <nav>
+      <a class="hide" href="#chi-sono">Chi sono</a>
+      <a class="hide" href="#progetti">Progetti</a>
+      <a href="#contatti">Contatti</a>
+      <button id="theme" aria-label="Cambia tema">◐</button>
+    </nav>
+  </div>
+
+  <!-- MODIFICA: intro -->
+  <header class="fade">
+    <div class="hero">
+      <div class="avatar">N</div>
+      <span class="status"><span class="dot"></span>Testo di stato, es. disponibile per nuovi progetti</span>
+    </div>
+    <h1>Ciao, sono <em>Nome Cognome</em>. Qui scrivi una frase che ti descrive.</h1>
+    <p class="lead">Una breve presentazione di due righe: cosa fai, cosa ti appassiona e cosa si può trovare in questo sito. Sostituisci questo testo con il tuo.</p>
+    <div class="cta">
+      <a class="btn primary" href="#progetti">Guarda i progetti</a>
+      <a class="btn" href="#contatti">Scrivimi</a>
+    </div>
+  </header>
+
+  <!-- MODIFICA: chi sono -->
+  <section id="chi-sono" class="about fade">
+    <h2>Chi sono</h2>
+    <p>Primo paragrafo di presentazione. Racconta chi sei, dove vivi e cosa studi o di cosa ti occupi. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <p>Secondo paragrafo. Parla dei tuoi interessi, di cosa stai imparando e di cosa ti piacerebbe costruire in futuro.</p>
+    <div class="tags">
+      <span>Competenza uno</span><span>Competenza due</span><span>Competenza tre</span><span>Competenza quattro</span><span>Interesse</span>
+    </div>
+  </section>
+
+  <!-- MODIFICA: progetti (duplica o elimina i blocchi <a class="card">) -->
+  <section id="progetti" class="fade">
+    <h2>Progetti</h2>
+    <div class="grid">
+      <a class="card" href="#">
+        <div class="meta"><span>Categoria</span><span>2026</span></div>
+        <h3>Titolo del progetto uno</h3>
+        <p>Breve descrizione del progetto: che problema risolve, quali tecnologie hai usato e qual è stato il risultato.</p>
+      </a>
+      <a class="card" href="#">
+        <div class="meta"><span>Categoria</span><span>2026</span></div>
+        <h3>Titolo del progetto due</h3>
+        <p>Breve descrizione del progetto: che problema risolve, quali tecnologie hai usato e qual è stato il risultato.</p>
+      </a>
+      <a class="card" href="#">
+        <div class="meta"><span>Categoria</span><span>2025</span></div>
+        <h3>Titolo del progetto tre</h3>
+        <p>Breve descrizione del progetto: che problema risolve, quali tecnologie hai usato e qual è stato il risultato.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- MODIFICA: percorso -->
+  <section class="fade">
+    <h2>Percorso</h2>
+    <div class="timeline">
+      <div><b>Titolo o ruolo attuale</b><small>Nome istituto o azienda · 2024 – oggi</small></div>
+      <div><b>Esperienza o corso precedente</b><small>Nome istituto o azienda · 2022 – 2024</small></div>
+      <div><b>Altra tappa importante</b><small>Nome istituto o azienda · 2021</small></div>
+    </div>
+  </section>
+
+  <!-- MODIFICA: contatti -->
+  <section id="contatti" class="fade">
+    <div class="contact">
+      <h3>Parliamone.</h3>
+      <p>Una frase per invitare le persone a scriverti. Sostituisci con il tuo testo.</p>
+      <div class="links">
+        <a href="mailto:nome@example.com">nome@example.com</a>
+        <a href="https://github.com/">GitHub</a>
+        <a href="https://www.linkedin.com/">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Il tuo nome · Testo del footer</footer>
+</main>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var saved = localStorage.getItem("theme");
+    if (saved) root.setAttribute("data-theme", saved);
+  } catch (e) {}
+  document.getElementById("theme").addEventListener("click", function () {
+    var dark = root.getAttribute("data-theme") === "dark" ||
+      (!root.getAttribute("data-theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    var next = dark ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>
